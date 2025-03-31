@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}Category{% endblock %}
+
+{% block content %}
+    <h1>Create an Category</h1>
+    <form action="{{ url_for('activity.create_category') }}" method="POST">
+        <input type="text" name="name" placeholder="Name" required><br><br>
+        <input type="number" name="category_id" placeholder="Category ID"><br><br>
+        <input type="submit" value="Register Category"><br>
+        <h2>-----------------------------------------------------------------</h2>
+        <h2>---------------------- Categories List ----------------------</h2>
+        <ul>
+            {% for category in categories %}
+                <li>{{category.id}} => {{ category.name }} {% if category.category_father %} -- FatherCategory: {{ category.category_father }}{% endif %}</li>
+            {% endfor %}
+        </ul>
+    </form>
+{% endblock %}
