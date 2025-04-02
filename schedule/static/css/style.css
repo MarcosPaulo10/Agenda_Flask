@@ -1,0 +1,145 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
+body {
+    background-color: #FF3CAC;
+    background-image: linear-gradient(225deg, #FF3CAC 0%, #784BA0 50%, #2B86C5 100%);
+
+    display: flex;
+    min-height: 100vh;
+    font-family: 'Montserrat', sans-serif;
+    color: #f0f8ff;
+}
+
+a, a:visited, a:hover, a:active {
+    color: inherit;
+    text-decoration: none;
+}
+
+/* HOME - PÁGINA INICIAL COM O QUADRO DE ATIVIDADES */
+.activities_board {
+    /* Estilo do quadro */
+    background-color: #0000009e; /* Cinza-azulado escuro, combinando com o tema */
+    border-radius: 10px; /* Bordas arredondadas */
+    padding: 20px; /* Espaçamento interno */
+    margin: 20px; /* Espaçamento externo */
+    min-height: 300px; /* Altura mínima para visualização */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.301); /* Sombra suave para profundidade */
+
+    /* Flexbox para organizar os cards */
+    display: flex;
+    flex-wrap: wrap; /* Permite que os cards quebrem para a próxima linha */
+    gap: 15px; /* Espaçamento entre os cards */
+    justify-content: flex-start; /* Centraliza os cards horizontalmente */
+    align-items: flex-start; /* Alinha os cards no topo */
+}
+
+.activity_card {
+    /* Estilo do card de atividade */
+    background-color: #4158D0;
+    background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
+
+    border-radius: 8px; /* Bordas arredondadas */
+    padding: 15px; /* Espaçamento interno */
+    width: 25vh; /* Largura fixa para os cards */
+    height: 15vh; /* Altura mínima */
+    color: #f0f8ff; /* Texto branco azulado para contraste */
+    font-family: 'Montserrat', sans-serif; /* Fonte moderna */
+    box-shadow: 0 2px 4px rgba(190, 190, 190, 0.1); /* Sombra leve */
+    transition: transform 0.2s; /* Animação suave ao interagir */
+
+    /* Flexbox interno para organizar o conteúdo do card (se necessário) */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* Efeito ao passar o mouse */
+.activity_card:hover {
+    transform: scale(1.05); /* Leve aumento ao passar o mouse */
+}
+/* ------------------------------------------------ */
+
+/* Estilizando a logo e título */
+.logo {
+
+    font-family: "Pacifico", cursive;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 1.6vh;
+      
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.logo img {
+    width: 10vh;
+    border-radius: 40%;
+}
+
+/* Estilo do Menu */
+.menu {
+    list-style: none;
+    width: 100%;
+    padding: 0;
+}
+
+.menu li {
+    width: 100%;
+}
+
+.menu li a {
+    display: block;
+    text-decoration: none;
+    color: white;
+    padding: 15px;
+    font-size: 16px;
+    text-align: center;
+    transition: 0.3s;
+}
+
+.menu li a:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.content {
+    margin-left: 250px;
+    padding: 20px;
+    flex: 1;
+}
+
+.sidebar {
+    width: 250px;
+    height: 100vh;
+    background: linear-gradient(to bottom, #0000003e, #0000008d);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0;
+    position: fixed;
+    left: 0;
+    top: 0;
+}
+
+.btn-grad {
+    background-image: linear-gradient(to right, #DA22FF 0%, #9733EE  51%, #DA22FF  100%)
+}
+
+.btn-grad {
+   margin: 10px;
+   padding: 15px 45px;
+   text-align: center;
+   text-transform: uppercase;
+   transition: 0.5s;
+   background-size: 200% auto;
+   color: white;            
+   box-shadow: 0 0 20px #eee;
+   border-radius: 10px;
+   display: block;
+}
+
+.btn-grad:hover {
+   background-position: right center;
+   color: #fff;
+   text-decoration: none;
+}

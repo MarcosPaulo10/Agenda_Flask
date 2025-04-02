@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}Activity{% endblock %}
+
+{% block content %}
+<div class="content">
+    <a href="{{ url_for('home.index') }}"><h2>Home</h2></a>
+    <h1>Activity - INFO</h1>
+    <h2>{{activity.name}}</h2>
+    <p>{{activity.description}}</p>
+    <h3>{{activity.date}}</h3>
+    <h3>{{activity.start_time}}</h3>
+    <h3>{{activity.end_time}}</h3>
+    <h3>{{activity.category}}</h3>
+    <h3>{{activity.done}}</h3>
+</div>
+{% endblock %}

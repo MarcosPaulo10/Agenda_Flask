@@ -3,7 +3,32 @@
 {% block title %}Home{% endblock %}
 
 {% block content %}
-    <h1>Home</h1>
-    <a href="{{ url_for('activity.index') }}"><h2>Activities</h2></a>
-    <a href="{{ url_for('tool.index') }}"><h2>Tools</h2></a>
+    <div class="content">
+        <h1>Today's Activities</h1>
+        <h2>Activities Undone:</h2>
+        <div class="activities_board">
+            {% for activity in activities %}
+                {% if not activity.done %}
+                    <div class="activity_card">
+                        <h2>{{ activity.name }}</h2>
+                        <p>{{ activity.description }}</p>
+                        <p>Done: {{ activity.done }}</p>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+        <br><br><br>
+        <h2>Activities Done:</h2>
+        <div class="activities_board">
+            {% for activity in activities %}
+                {% if activity.done %}
+                    <div class="activity_card">
+                        <h2>{{ activity.name }}</h2>
+                        <p>{{ activity.description }}</p>
+                        <p>Done: {{ activity.done }}</p>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
 {% endblock %}

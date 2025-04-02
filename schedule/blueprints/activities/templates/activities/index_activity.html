@@ -3,16 +3,18 @@
 {% block title %}Activity{% endblock %}
 
 {% block content %}
+<div class="content">
     <h1>Create an Activity</h1>
-    <form action="{{ url_for('activity.create') }}" method="POST">
-        <input type="text" name="name" placeholder="Name" required><br><br>
+    <form action="{{ url_for('activity.index_activity') }}" method="POST">
+        <input type="text" name="name" placeholder="Activity" required><br><br>
         <input type="text" name="description" placeholder="Description"><br><br>
         <input type="date" name="date" placeholder="Date"><br><br>
         <input type="time" name="start_time" placeholder="Start Time"><br><br>
         <input type="time" name="end_time" placeholder="End Time"><br><br>
         <input type="number" name="category_id" placeholder="Category ID"><br><br>
         <input type="checkbox" name="done">Done<br><br>
-        <input type="submit" value="Register Category"><br>
+        <button class='btn-grad' type="submit">Register Activity</button><br>
+    </form>
         <h2>-----------------------------------------------------------------</h2>
         <h2>Activities List</h2>
         <ul>
@@ -20,5 +22,5 @@
                 <li>{{activity.date}} | {{activity.name}} => {{ activity.description }} </li>
             {% endfor %}
         </ul>
-    </form>
+</div>
 {% endblock %}

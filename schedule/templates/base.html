@@ -4,8 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Schedule{% endblock %}</title>
+    <link rel="stylesheet" type='text/css' href="/css/style.css">
 </head>
 <body>
+    {% block leftbar %}
+    <div class="sidebar">
+        <div class="logo">
+            <a href="{{ url_for('home.index') }}">
+                <img src="/img/logo.png" alt="Logo do Sistema">
+                <h2>Monkey's Life</h2>
+            </a>
+        </div>
+        <ul class="menu">
+            <li><a href="{{ url_for('home.index') }}">📅 Schedule</a></li>
+            <li><a href="{{ url_for('activity.index_activity') }}">📋 Activities</a></li>
+            <li><a href="{{ url_for('activity.index_category') }}">📊 Category</a></li>
+            <li><a href="{{ url_for('tool.index') }}">⏳ Tools</a></li>
+            <!-- <li><a href="#">⏰ Lembretes--</a></li> -->  
+        </ul>
+    </div>
+    {% endblock %}
+
     {% block content %}{% endblock %}
 </body>
 </html>
