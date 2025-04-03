@@ -11,7 +11,8 @@ activity = Blueprint('activity', __name__, template_folder='templates')
 def index_activity():
     if request.method == 'GET':
         activities = Activity.query.all()
-        return render_template('activities/index_activity.html', activities=activities)
+        categories = Category.query.all()
+        return render_template('activities/index_activity.html', activities=activities, categories=categories)
     
     if request.method == 'POST':
         name = request.form.get('name')
@@ -42,6 +43,22 @@ def index_activity():
         
         return redirect(url_for('activity.index_activity'))
     
+@activity.route('/done/<int:id>', methods=['POST'])
+def done_activity(id):
+    activity = Activity.query.get(id)
+    activity.done = not activity.done
+    db.session.commit()
+    
+    return redirect(url_for('home.index'))
+
+@activity.route('/delete/<int:id>', methods=['POST'])
+def delete_activity(id):
+    activity = Activity.query.get(id)
+    db.session.delete(activity)
+    db.session.commit()
+    
+    return redirect(url_for('home.index'))
+    
 @activity.route('/category', methods=['POST', 'GET'])
 def index_category():
     if request.method == 'GET':
@@ -58,10 +75,6 @@ def index_category():
         db.session.commit()
         
         return redirect(url_for('activity.index_category'))
-    
-@activity.route('/teste')
-def teste():
-    return render_template('activities/teste.html')
 
 @activity.route('/info_activity/<int:id>')
 def info_activity(id):

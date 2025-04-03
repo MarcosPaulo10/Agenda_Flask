@@ -10,9 +10,25 @@
             {% for activity in activities %}
                 {% if not activity.done %}
                     <div class="activity_card">
-                        <h2>{{ activity.name }}</h2>
-                        <p>{{ activity.description }}</p>
-                        <p>Done: {{ activity.done }}</p>
+                        <div class="activity_card_header">
+                            <h4>{{ activity.name }}</h4>
+                            <form action=" {{ url_for('activity.delete_activity', id=activity.id) }}" method="POST">
+                                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                                <button type="submit" class="btn-icon">
+                                    <img class='icon' src="/img/delete.png" alt="Delete" title="Delete Activity.">
+                                </button>
+                            </form>
+                        </div>
+                        <div class="activity_card_body">
+                            <p>{{ activity.description }}</p>
+                        </div>
+                        <div class="activity_card_footer">
+                            <form action=" {{ url_for('activity.done_activity', id=activity.id) }}" method="POST">
+                                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                            <button class="btn-icon" type='submit'>
+                                <img class='icon' src="/img/check.png" alt="Done" title="Mark as DONE.">
+                            </button>
+                        </div>                        
                     </div>
                 {% endif %}
             {% endfor %}
@@ -23,9 +39,25 @@
             {% for activity in activities %}
                 {% if activity.done %}
                     <div class="activity_card">
-                        <h2>{{ activity.name }}</h2>
-                        <p>{{ activity.description }}</p>
-                        <p>Done: {{ activity.done }}</p>
+                        <div class="activity_card_header">
+                            <h4>{{ activity.name }}</h4>
+                            <form action=" {{ url_for('activity.delete_activity', id=activity.id) }}" method="POST">
+                                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                                <button type="submit" class="btn-icon">
+                                    <img class='icon' src="/img/delete.png" alt="Delete" title="Delete Activity.">
+                                </button>
+                            </form>
+                        </div>
+                        <div class="activity_card_body">
+                            <p>{{ activity.description }}</p>
+                        </div>
+                        <div class="activity_card_footer">
+                            <form action=" {{ url_for('activity.done_activity', id=activity.id) }}" method="POST">
+                                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                            <button class="btn-icon" type='submit'>
+                                <img class='icon' src="/img/uncheck.png" alt="Done" title="Mark as UNDONE.">
+                            </button>
+                        </div>                        
                     </div>
                 {% endif %}
             {% endfor %}

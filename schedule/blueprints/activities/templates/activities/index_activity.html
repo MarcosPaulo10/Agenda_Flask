@@ -6,12 +6,17 @@
 <div class="content">
     <h1>Create an Activity</h1>
     <form action="{{ url_for('activity.index_activity') }}" method="POST">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
         <input type="text" name="name" placeholder="Activity" required><br><br>
         <input type="text" name="description" placeholder="Description"><br><br>
         <input type="date" name="date" placeholder="Date"><br><br>
         <input type="time" name="start_time" placeholder="Start Time"><br><br>
         <input type="time" name="end_time" placeholder="End Time"><br><br>
-        <input type="number" name="category_id" placeholder="Category ID"><br><br>
+        <select name="category_id">
+            {% for category in categories %}
+                <option value="{{ category.id }}">{{ category.name }}</option>
+            {% endfor %}
+        </select><br><br>
         <input type="checkbox" name="done">Done<br><br>
         <button class='btn-grad' type="submit">Register Activity</button><br>
     </form>

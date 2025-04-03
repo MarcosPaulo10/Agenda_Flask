@@ -6,16 +6,25 @@
 <div class="content">
     <h1>Create an Category</h1>
     <form action="{{ url_for('activity.index_category') }}" method="POST">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
         <input type="text" name="name" placeholder="Name" required><br><br>
-        <input type="number" name="category_id" placeholder="Category ID"><br><br>
-        <button class="btn-grad" type="submit">Register Category</button><br>
-    </form>
-        <h2>-----------------------------------------------------------------</h2>
-        <h2>---------------------- Categories List ----------------------</h2>
-        <ul>
+        <input list="categories" name="category_id" id="category_id">
+
+        <datalist id="categories">
+            <option value="">Nenhuma</option>  <!-- Opção vazia como primeira -->
             {% for category in categories %}
-                <li>{{category.id}} => {{ category.name }} {% if category.category_father %} -- FatherCategory: {{ category.category_father }}{% endif %}</li>
+                <option value="{{ category.id }}">{{ category.name }}</option>
             {% endfor %}
-        </ul>
+        </datalist>
+        <br><br>
+        <button class="btn-grad" type="submit">Register Category</button>
+    </form>
+    <h2>-----------------------------------------------------------------</h2>
+    <h2>---------------------- Categories List ----------------------</h2>
+    <ul>
+        {% for category in categories %}
+            <li>{{category.id}} => {{ category.name }} {% if category.category_father %} -- FatherCategory: {{ category.category_father }}{% endif %}</li>
+        {% endfor %}
+    </ul>
 </div>
 {% endblock %}
