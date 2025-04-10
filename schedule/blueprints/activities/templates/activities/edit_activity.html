@@ -4,37 +4,37 @@
 
 {% block content %}
 <div class="content">
-    <h2>Editar Atividade</h2>
+    <h1>Editar Atividade</h1>
     <form method="POST" action="{{ url_for('activity.edit_activity', id=activity.id) }}">
         <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
 
-        <label>Nome:</label>
-        <input type="text" name="name" value="{{ activity.name }}" required><br>
+        <label>Nome:</label><br>
+        <input type="text" name="name" value="{{ activity.name }}" required><br><br>
 
-        <label>Descrição:</label>
-        <textarea name="description">{{ activity.description }}</textarea><br>
+        <label>Descrição:</label><br>
+        <textarea name="description">{{ activity.description }}</textarea><br><br>
 
-        <label>Data:</label>
-        <input type="date" name="date" value="{{ activity.date }}" required><br>
+        <label>Data:</label><br>
+        <input type="date" name="date" value="{{ activity.date }}" required><br><br>
 
 
-        <label>Hora de Início:</label>
-        <input type="time" name="start_time" value="{{ activity.start_time }}"><br>
+        <label>Hora de Início:</label><br>
+        <input type="time" name="start_time" value="{{ activity.start_time }}"><br><br>
 
-        <label>Hora de Término:</label>
-        <input type="time" name="end_time" value="{{ activity.end_time }}"><br>
+        <label>Hora de Término:</label><br>
+        <input type="time" name="end_time" value="{{ activity.end_time }}"><br><br>
 
         <label>Concluído:</label>
-        <input type="checkbox" name="done" {% if activity.done %}checked{% endif %}><br>
+        <input type="checkbox" name="done" {% if activity.done %}checked{% endif %}><br><br>
 
-        <label>Categoria:</label>
+        <label>Categoria:</label><br>
         <select name="category_id">
             {% for category in categories %}
                 <option value="{{ category.id }}" {% if category.id == activity.category_id %}selected{% endif %}>
                     {{ category.name }}
                 </option>
             {% endfor %}
-        </select><br>
+        </select><br><br>
 
         <button type="submit">Salvar</button>
     </form>

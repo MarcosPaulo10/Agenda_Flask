@@ -5,7 +5,12 @@
 {% block content %}
     <div class="content">
         <h1>Today's Activities</h1>
-        <h2>Activities Undone:</h2>
+        <form method="get" action="{{ url_for('home.index') }}" class="date-filter-form">
+            <label for="date">Filter by date:</label>
+            <input type="date" id="date" name="date" value="{{ selected_date }}">
+            <button type="submit">Filter</button>
+        </form><br>
+        <h2>To Do Activities:</h2>
 
         <div class="activities_board">
             {% for activity in activities %}
@@ -31,6 +36,10 @@
                             <a href="{{ url_for('activity.edit_activity', id=activity.id) }}" class="btn-icon">
                                 <img class='icon' src="/img/edit.png" alt="Edit" title="Edit Activity.">
                             </a>
+
+                            <a href="{{ url_for('activity.activity_info', id=activity.id) }}" class="btn-icon">
+                                <img class='icon' src="/img/info.png" alt="Info" title="Activity Info.">
+                            </a>
                                 
                             <form action=" {{ url_for('activity.delete_activity', id=activity.id) }}" method="POST">
                                 <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
@@ -45,7 +54,7 @@
             {% endfor %}
         </div>
         <br><br><br>
-        <h2>Activities Done:</h2>
+        <h2>Done Activities:</h2>
         <div class="activities_board">
             {% for activity in activities %}
                 {% if activity.done %}
