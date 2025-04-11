@@ -1,7 +1,0 @@
-.venv
-__pycache__/
-README.txt
-.gitignore
-requirements.txt
-schedule.db
-instance/
