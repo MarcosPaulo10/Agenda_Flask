@@ -2,7 +2,7 @@ from flask import Blueprint, render_template, request, redirect, url_for
 from schedule.app import db
 from datetime import datetime
 
-from schedule.blueprints.activities.models import Activity, Category
+from .models import Activity, Category
 
 activity = Blueprint('activity', __name__, template_folder='templates')
 
